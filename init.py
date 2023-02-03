@@ -57,11 +57,13 @@ while True:
                 token.write(creds.to_json())
     #get the actual date on day/month/year hour/minute/second format
     current_time = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    row_value = [creds.expiry,current_time]
+    row_value = [str(creds.expiry),str(current_time)]
     # save actual value as token_expiration.csv file
     refresh_creds(row_value)
+    print("row_value_dumps: ",row_value)
     # save actual value in a google sheet file 
     add_new_row(creds=creds, sheet_id=test_refresh_token_sheet_id, range_name=test_refresh_token_range_name, row_value=row_value)
+
     # read a break.json file that will break the loop if its false
     with open("break.json", "r") as f:
        data = json.load(f)
