@@ -70,3 +70,4 @@ while True:
     if not("key" in data) or data["key"] == False:
         break
     time.sleep(60) # wait for a minute before checking again
+    
